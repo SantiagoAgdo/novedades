@@ -15,8 +15,6 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 @ApplicationScoped
 public class NovedadesClienteCDTImpl implements NovedadesClienteCDTService {
 
@@ -41,7 +39,7 @@ public class NovedadesClienteCDTImpl implements NovedadesClienteCDTService {
             NovedadCDTDigitalType novedadCDTDigitalType = novedadesMapper.novedadCDTDigitalToType(novedadesEntity);
             novedadesValidator.verificarNovedadesCDT(novedadCDTDigitalType);
 
-            novedadClienteCDTDao.persist(novedadesEntity);
+            novedadClienteCDTDao.crearNovedad(novedadesEntity);
 
             logger.info("Termina creacion de crearNovedadCdtDigitalTypeImpl");
             return  novedadCDTDigitalType;

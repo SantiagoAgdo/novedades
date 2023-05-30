@@ -1,7 +1,7 @@
 package com.mibanco.novedades.es.services.impl;
 
 import com.mibanco.novedades.es.controller.NovedadesController;
-import com.mibanco.novedades.es.dao.contract.NovedadConsultaDocumentoDao;
+import com.mibanco.novedades.es.dao.contract.NovedadClienteCDTDao;
 import com.mibanco.novedades.es.dao.entity.NovedadesEntity;
 import com.mibanco.novedades.es.gen.type.NovedadCDTDigitalType;
 import com.mibanco.novedades.es.services.contract.NovedadesConsultaDocumentoService;
@@ -22,7 +22,7 @@ public class NovedadesConsultaDocumentoImpl implements NovedadesConsultaDocument
     public static final Logger logger = LoggerFactory.getLogger(NovedadesController.class);
 
     @Inject
-    NovedadConsultaDocumentoDao novedadConsultaDocumentoDao;
+    NovedadClienteCDTDao novedadConsultaDocumentoDao;
 
     @Inject
     NovedadesMapper novedadesMapper;
@@ -32,7 +32,7 @@ public class NovedadesConsultaDocumentoImpl implements NovedadesConsultaDocument
         logger.info("Inicia consulta de NovedadesPorNumeroDocumento");
 
         try {
-            List<NovedadesEntity> list = novedadConsultaDocumentoDao.list("numeroDocumento", numero);
+            List<NovedadesEntity> list = novedadConsultaDocumentoDao.getNovedad(numero);
 
             logger.info("Termina consulta de NovedadesPorNumeroDocumento");
             return  list.stream().map(novedadesMapper::novedadCDTDigitalToType)

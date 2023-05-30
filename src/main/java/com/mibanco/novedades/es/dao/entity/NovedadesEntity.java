@@ -6,7 +6,6 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-@Entity
 @Table(name= "novedad_cdt_digital")
 public class NovedadesEntity {
 
